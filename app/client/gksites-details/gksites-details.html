@@ -1,0 +1,56 @@
+<nav class="top-nav custom-top-nav indigo darken-1">
+    <div class="container">
+        <div class="nav-wrapper" *ng-if="gksites"><a class="page-title">gksites: {{gksites.name}}</a></div>
+    </div>
+</nav>
+
+<div class="container relative-container" *ng-if="gksites">
+    <ul class="collection">
+        <li class="collection-item">
+            Name: {{gksites.name}}
+        </li>
+        <li class="collection-item">
+            Description: {{gksites.description}}
+        </li>
+        <li class="collection-item">
+            Location: {{gksites.location}}
+        </li>
+        <li class="collection-item">
+            Status: {{gksitesStatus}}
+        </li>
+    </ul>
+
+    <gksites-edit id="{{gksites._id}}"></gksites-edit>
+    
+    <a class="btn-floating btn-large waves-effect waves-light red right add-button-sec" 
+       (click)="deleteConfirmation()">
+        <i class="material-icons">
+            info_outline
+        </i>
+    </a>
+    
+    <a [router-link]="['/gksitesList']" 
+       class="btn-floating btn-large waves-effect waves-light indigo darken-4 right add-button-third">
+        <i class="material-icons">
+            view_list
+        </i>
+    </a>
+
+
+</div>
+
+
+<!-- Modal Structure -->
+<div id="modal3" class="modal" *ng-if="gksites">
+    <div class="modal-content">
+        <h4>Delete {{gksites.name}}</h4>
+        <p>Are you sure that you want to delete {{gksites.name}} gksites ?</p>
+    </div>
+    <div class="modal-footer">
+        <button class=" modal-action modal-close waves-effect waves-green btn-flat" (click)="deletegksites()">
+            Agree
+        </button>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+          
